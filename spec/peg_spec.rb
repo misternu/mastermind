@@ -20,4 +20,12 @@ describe Peg do
       expect(peg1 == peg2).to be true
     end
   end
+
+  describe 'arrays of pegs' do
+    let(:array1) {[Peg.new("red"), Peg.new("orange"), Peg.new("yellow")]}
+    let(:array2) {[Peg.new("green"), Peg.new("red"), Peg.new("yellow")]}
+    it 'returns two items when we take the intersection' do
+      expect((array1 & array2).length).to eq 2
+    end
+  end
 end
