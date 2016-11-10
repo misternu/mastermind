@@ -1,21 +1,25 @@
 class Peg
-  COLORS = ["red", "green", "blue", "yellow", "brown", "orange", "black", "white"]
+  COLORS = ["red", "green", "blue", "yellow", "orange", "purple"]
 
-  attr_reader :color_index
-  def initialize(color)
-    @color_index = COLORS.index(color)
+  attr_reader :c_index
+  def initialize(color = nil)
+    if color
+      @c_index = COLORS.index(color)
+    else
+      @c_index = rand(COLORS.length)
+    end
   end
 
   def color
-    COLORS[@color_index]
+    COLORS[@c_index]
   end
 
   def ==(other_peg)
-    @color_index == other_peg.color_index
+    @c_index == other_peg.c_index
   end
 
   def hash
-    @color_index.hash ^ Peg.hash
+    @c_index.hash ^ Peg.hash
   end
 
   alias_method :eql?, :==

@@ -3,6 +3,14 @@ require_relative 'spec_helper'
 
 describe Peg do
   let(:peg) { Peg.new("red") }
+
+  describe '#initialize' do
+    it 'takes zero or one argument' do
+      expect{Peg.new()}.not_to raise_error
+      expect{Peg.new("red")}.not_to raise_error
+    end
+  end
+
   describe '#color' do
     it 'returns the color of the peg' do
       expect(peg.color).to eq "red"
