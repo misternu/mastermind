@@ -13,4 +13,10 @@ class Peg
   def ==(other_peg)
     @color_index == other_peg.color_index
   end
+
+  def hash
+    @color_index.hash ^ Peg.hash
+  end
+
+  alias_method :eql?, :==
 end
