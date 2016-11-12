@@ -1,5 +1,7 @@
+require 'colorize'
+
 class Peg
-  COLORS = ["red", "green", "blue", "yellow", "orange", "purple"]
+  COLORS = ["red", "green", "yellow", "blue", "magenta", "white"]
 
   attr_reader :c_index
   def initialize(color = nil)
@@ -8,6 +10,14 @@ class Peg
     else
       @c_index = rand(COLORS.length)
     end
+  end
+
+  def to_s
+    colorize("*")
+  end
+
+  def colorize(string)
+    return string.send(COLORS[@c_index])
   end
 
   def color
