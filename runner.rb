@@ -2,9 +2,8 @@ require_relative 'peg'
 require_relative 'game'
 require_relative 'view'
 
-answer = Array.new(4) { Peg.new }
-game = Mastermind.new(answer)
-view = MastermindView.new
+game = Mastermind.new
+view = MastermindView.new(game)
 
 view.reset_screen
 puts "Welcome to Mastermind, enter a guess to play"
@@ -23,8 +22,14 @@ while(true)
       next
     end
     valid = game.guess(words[1..-1])
+    unless valid
+      puts "Your guess wasn't valid colors"
+      next
+    end
+  else
+    puts "invalid command"
   end
   view.reset_screen
-  puts view.render(game)
-  p game.answer
+  puts view.render
+  break if game.over
 end

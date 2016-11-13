@@ -7,6 +7,7 @@ class Peg
   def initialize(color = nil)
     if color
       @c_index = COLORS.index(color)
+      raise ArgumentError.new("Invalid Color") unless @c_index
     else
       @c_index = rand(COLORS.length)
     end
